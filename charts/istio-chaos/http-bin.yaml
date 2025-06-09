@@ -6,16 +6,7 @@ global:
   headerValue: "true"
 
 profiles:
-  abort:
-    enabled: true
-    statusCode: 503
-    percentage: 50
 
-  delay:
-    enabled: true
-    delay: "5s"
-    percentage: 50
-    
   unreachable:
     enabled: true
     delay: "5s"
