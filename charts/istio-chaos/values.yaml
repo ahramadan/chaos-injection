@@ -1,6 +1,6 @@
 global:
   serviceName: ""
-  namespace: "production"
+  namespace: "default"
   serviceHost: ""
   subset: "v1"
   headerValue: "true"
