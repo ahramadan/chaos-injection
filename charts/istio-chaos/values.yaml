@@ -5,19 +5,4 @@ global:
   subset: "v1"
   headerValue: "true"
 
-profiles:
-  abort:
-    enabled: false
-    statusCode: 503
-    percentage: 50
-
-  delay:
-    enabled: false
-    delay: "5s"
-    percentage: 25
-
-  unreachable:
-    enabled: false
-    delay: "10s"
-    statusCode: 504
-    percentage: 100
+profile:
