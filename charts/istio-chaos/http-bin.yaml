@@ -9,7 +9,7 @@ profiles:
   abort:
     enabled: false
     statusCode: 503
-    percentage: 50
+    percentage: 10
 
   delay:
     enabled: false
