@@ -11,11 +11,11 @@ profile:
   matchHeader: x-chaos-test
 
   delay:
-    enabled: true
+    enabled: false
     fixedDelay: "10s"
     percentage: 40
 
   abort:
     enabled: true
     statusCode: 503
-    percentage: 40
+    percentage: 100
