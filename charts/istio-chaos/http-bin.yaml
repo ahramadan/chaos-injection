@@ -8,7 +8,7 @@ global:
 profile:
   enabled: true
   name: unreachable
-  matchHeader: x-chaos-test
+  matchHeader: x-chaos-httpbin
 
   delay:
     enabled: true
