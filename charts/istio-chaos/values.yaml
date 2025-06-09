@@ -5,10 +5,9 @@ global:
   subset: "v1"
   headerValue: "true"
 
-profile:
-  enabled: true
-  name: ""
-  matchHeader: "x-chaos-profile"
-  percentage: 50
-  delay: "10s"
-  abortStatus: 505
+profiles:
+  unreachable:
+    enabled: false
+    delay: "55s"
+    statusCode: 507
+    percentage: 1
