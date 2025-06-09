@@ -17,5 +17,8 @@ profiles:
     percentage: 100
     
   unreachable:
-    enabled: false
+    enabled: true
+    delay: "10s"
+    statusCode: 504
+    percentage: 100
 
