@@ -7,22 +7,16 @@ global:
 
 profiles:
   abort:
-    enabled: true
+    enabled: false
     statusCode: 503
     percentage: 10
 
   delay:
-    enabled: false
+    enabled: true
+    delay: "10s"           # delay the response by 10 seconds
+    percentage: 100
+    timeout: "2s"
+    
   unreachable:
-    enabled: false
-  split:
-    enabled: false
-  retry:
-    enabled: false
-  overload:
-    enabled: false
-  ratelimit:
-    enabled: false
-  circuitbreaker:
     enabled: false
 
