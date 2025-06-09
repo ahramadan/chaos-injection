@@ -19,6 +19,6 @@ profiles:
   unreachable:
     enabled: true
     delay: "10s"
-    statusCode: 0
+    statusCode: 503
     percentage: 100
 
