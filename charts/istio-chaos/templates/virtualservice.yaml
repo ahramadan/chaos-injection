@@ -1,26 +1,33 @@
+{{- $profile := .Values.profile }}
+{{- if $profile.enabled }}
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: {{ .Values.global.serviceName }}-unreachable
-  namespace: {{ .Values.global.namespace }}
+  name: {{ $.Values.global.serviceName }}-{{ $profile.name }}
+  namespace: {{ $.Values.global.namespace }}
 spec:
   hosts:
-    - {{ .Values.global.serviceHost }}
+    - {{ $.Values.global.serviceHost }}
   http:
     - match:
         - headers:
-            x-chaos-test:
-              exact: {{ .Values.global.headerValue | quote }}
+            {{ $profile.matchHeader | default "x-chaos-test" }}:
+              exact: {{ $.Values.global.headerValue | quote }}
       fault:
+{{- if $profile.delay.enabled }}
         delay:
-          fixedDelay: {{ .Values.profiles.unreachable.delay | quote }}
+          fixedDelay: {{ $profile.delay.fixedDelay | quote }}
           percentage:
-            value: {{ .Values.profiles.unreachable.percentage }}
+            value: {{ $profile.delay.percentage }}
+{{- end }}
+{{- if $profile.abort.enabled }}
         abort:
-          httpStatus: {{ .Values.profiles.unreachable.statusCode }}
+          httpStatus: {{ $profile.abort.statusCode }}
           percentage:
-            value: {{ .Values.profiles.unreachable.percentage }}
+            value: {{ $profile.abort.percentage }}
+{{- end }}
       route:
         - destination:
-            host: {{ .Values.global.serviceHost }}
-            subset: {{ .Values.global.subset }}
+            host: {{ $.Values.global.serviceHost }}
+            subset: {{ $.Values.global.subset }}
+{{- end }}
