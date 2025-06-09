@@ -17,5 +17,5 @@ profile:
 
   abort:
     enabled: true
-    statusCode: 503
+    statusCode: 504
     percentage: 100
