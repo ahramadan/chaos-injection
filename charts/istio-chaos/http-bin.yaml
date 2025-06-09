@@ -6,7 +6,7 @@ global:
   headerValue: "true"
 
 profile:
-  enabled: true
+  enabled: false
   name: zombie-service
   matchHeader: x-chaos-test
 
@@ -16,6 +16,6 @@ profile:
     percentage: 40
 
   abort:
-    enabled: true
+    enabled: false
     statusCode: 504
     percentage: 100
