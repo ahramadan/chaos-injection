@@ -2,24 +2,20 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: chaos-test-appset
-  namespace: argocd
+  namespace: default
 spec:
   generators:
     - list:
         elements:
-          - service: checkout
-            valuesFile: checkout-chaos.yaml
-          - service: orders
-            valuesFile: orders-chaos.yaml
-          - service: payment
-            valuesFile: payment-chaos.yaml
+          - service: http-bin
+            valuesFile: http-bin.yaml
   template:
     metadata:
       name: chaos-{{service}}
     spec:
       project: default
       source:
-        repoURL: https://github.com/your-org/chaos-injection.git
+        repoURL: https://github.com/ahramadan/chaos-injection.git
         targetRevision: main
         path: charts/istio-chaos
         helm:
@@ -27,7 +23,7 @@ spec:
             - ../../environments/production/{{valuesFile}}
       destination:
         server: https://kubernetes.default.svc
-        namespace: production
+        namespace: default
       syncPolicy:
         automated:
           prune: true
