@@ -1,0 +1,28 @@
+global:
+  serviceName: "httpbin"
+  namespace: "default"
+  serviceHost: "httpbin.production.svc.cluster.local"
+  subset: "v1"
+  headerValue: "true"
+
+profiles:
+  abort:
+    enabled: true
+    statusCode: 503
+    percentage: 50
+
+  delay:
+    enabled: false
+  unreachable:
+    enabled: false
+  split:
+    enabled: false
+  retry:
+    enabled: false
+  overload:
+    enabled: false
+  ratelimit:
+    enabled: false
+  circuitbreaker:
+    enabled: false
+
