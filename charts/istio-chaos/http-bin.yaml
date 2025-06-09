@@ -11,7 +11,7 @@ profile:
   matchHeader: x-chaos-test
 
   delay:
-    enabled: true
+    enabled: false
     fixedDelay: "10s"
     percentage: 40
 
