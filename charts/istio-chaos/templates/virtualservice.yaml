@@ -1,0 +1,35 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: {{ .Values.global.serviceName }}-chaos
+  namespace: {{ .Values.global.namespace }}
+spec:
+  hosts:
+    - {{ .Values.global.serviceHost }}
+  http:
+{{- range $name, $profile := .Values.profiles }}
+{{- if $profile.enabled }}
+    - name: {{ $name | quote }}
+      match:
+        - headers:
+            x-chaos-profile:
+              exact: {{ $name | quote }}
+      fault:
+{{- if $profile.delay }}
+        delay:
+          fixedDelay: {{ $profile.delay | quote }}
+          percentage:
+            value: {{ $profile.percentage }}
+{{- end }}
+{{- if $profile.abortStatus }}
+        abort:
+          httpStatus: {{ $profile.abortStatus }}
+          percentage:
+            value: {{ $profile.percentage }}
+{{- end }}
+      route:
+        - destination:
+            host: {{ $.Values.global.serviceHost }}
+            subset: {{ $.Values.global.subset }}
+{{- end }}
+{{- end }}
