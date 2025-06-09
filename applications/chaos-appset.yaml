@@ -8,7 +8,7 @@ spec:
     - list:
         elements:
           - service: httpbin
-            valuesFile: environments/production/http-bin.yaml
+            valuesFile: http-bin.yaml
   template:
     metadata:
       name: chaos-{{service}}
