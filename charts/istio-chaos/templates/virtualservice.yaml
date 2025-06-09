@@ -21,9 +21,9 @@ spec:
           percentage:
             value: {{ $profile.percentage }}
 {{- end }}
-{{- if $profile.abortStatus }}
+{{- if $profile.statusCode }}
         abort:
-          httpStatus: {{ $profile.abortStatus }}
+          httpStatus: {{ $profile.statusCode }}
           percentage:
             value: {{ $profile.percentage }}
 {{- end }}
