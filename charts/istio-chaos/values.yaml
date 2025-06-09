@@ -21,27 +21,3 @@ profiles:
     delay: "10s"
     statusCode: 504
     percentage: 100
-
-  split:
-    enabled: false
-    versions:
-      - subset: v1
-        weight: 50
-      - subset: v2
-        weight: 50
-
-  retry:
-    enabled: false
-    attempts: 3
-    perTryTimeout: "2s"
-
-  overload:
-    enabled: false
-
-  ratelimit:
-    enabled: false
-    percentage: 100
-
-  circuitbreaker:
-    enabled: false
-    percentage: 100
