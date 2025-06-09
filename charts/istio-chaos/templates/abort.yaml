@@ -1,4 +1,4 @@
-{{- if .Values.profiles.abort.enabled }}
+{{- if false }}
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
