@@ -5,9 +5,17 @@ global:
   subset: "v1"
   headerValue: "true"
 
-profiles:
-  unreachable:
+profile:
+  enabled: true
+  name: unreachable
+  matchHeader: ""
+
+  delay:
     enabled: false
-    delay: "55s"
-    statusCode: 507
-    percentage: 1
+    fixedDelay: "55s"
+    percentage: 40
+
+  abort:
+    enabled: false
+    statusCode: 503
+    percentage: 10
