@@ -12,7 +12,7 @@ spec:
         - headers:
             x-chaos-test:
               exact: {{ .Values.global.headerValue | quote }}
-      timeout: {{ .Values.profiles.delay.timeout | quote }}
+      timeout: {{ .Values.profiles.delay.timeout | default "2s" | quote }}
       fault:
         delay:
           fixedDelay: {{ .Values.profiles.delay.delay | quote }}
