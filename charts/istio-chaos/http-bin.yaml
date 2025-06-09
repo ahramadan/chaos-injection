@@ -15,7 +15,6 @@ profiles:
     enabled: true
     delay: "10s"           # delay the response by 10 seconds
     percentage: 100
-    timeout: "2s"
     
   unreachable:
     enabled: false
