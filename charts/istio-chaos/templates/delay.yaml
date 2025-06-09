@@ -1,0 +1,24 @@
+{{- if .Values.profiles.delay.enabled }}
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: {{ .Values.global.serviceName }}-delay
+  namespace: {{ .Values.global.namespace }}
+spec:
+  hosts:
+    - {{ .Values.global.serviceHost }}
+  http:
+    - match:
+        - headers:
+            x-chaos-test:
+              exact: {{ .Values.global.headerValue | quote }}
+      fault:
+        delay:
+          fixedDelay: {{ .Values.profiles.delay.delay | quote }}
+          percentage:
+            value: {{ .Values.profiles.delay.percentage }}
+      route:
+        - destination:
+            host: {{ .Values.global.serviceHost }}
+            subset: {{ .Values.global.subset }}
+{{- end }}

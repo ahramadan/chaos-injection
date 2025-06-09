@@ -1,0 +1,4 @@
+apiVersion: v2
+name: istio-chaos
+description: Helm chart for Istio fault injection chaos testing
+version: 0.1.0

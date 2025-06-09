@@ -1,0 +1,24 @@
+{{- if .Values.profiles.abort.enabled }}
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: {{ .Values.global.serviceName }}-abort
+  namespace: {{ .Values.global.namespace }}
+spec:
+  hosts:
+    - {{ .Values.global.serviceHost }}
+  http:
+    - match:
+        - headers:
+            x-chaos-test:
+              exact: {{ .Values.global.headerValue | quote }}
+      fault:
+        abort:
+          httpStatus: {{ .Values.profiles.abort.statusCode }}
+          percentage:
+            value: {{ .Values.profiles.abort.percentage }}
+      route:
+        - destination:
+            host: {{ .Values.global.serviceHost }}
+            subset: {{ .Values.global.subset }}
+{{- end }}
