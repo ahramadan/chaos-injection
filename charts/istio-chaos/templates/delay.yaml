@@ -14,7 +14,7 @@ spec:
               exact: {{ .Values.global.headerValue | quote }}
       timeout: {{ .Values.profiles.delay.timeout | default "2s" | quote }}
       retries:
-        attempts: 1
+        attempts: 2
         perTryTimeout: 2s
       fault:
         delay:
