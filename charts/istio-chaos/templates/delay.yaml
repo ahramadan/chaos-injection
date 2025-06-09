@@ -13,6 +13,9 @@ spec:
             x-chaos-test:
               exact: {{ .Values.global.headerValue | quote }}
       timeout: {{ .Values.profiles.delay.timeout | default "2s" | quote }}
+      retries:
+        attempts: 1
+        perTryTimeout: 2s
       fault:
         delay:
           fixedDelay: {{ .Values.profiles.delay.delay | quote }}
