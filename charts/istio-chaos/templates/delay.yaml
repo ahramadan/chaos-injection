@@ -1,4 +1,4 @@
-{{- if .Values.profiles.delay.enabled }}
+{{- if false }}
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
