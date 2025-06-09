@@ -7,12 +7,12 @@ global:
 
 profiles:
   abort:
-    enabled: false
+    enabled: true
     statusCode: 503
     percentage: 50
 
   delay:
-    enabled: false
+    enabled: true
     delay: "5s"
     percentage: 50
     
