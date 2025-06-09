@@ -14,9 +14,9 @@ spec:
               exact: {{ .Values.global.headerValue | quote }}
       fault:
         abort:
+          httpStatus: {{ .Values.profiles.abort.statusCode }}
           percentage:
             value: {{ .Values.profiles.abort.percentage }}
-        grpcStatus: "UNAVAILABLE"
       route:
         - destination:
             host: {{ .Values.global.serviceHost }}
