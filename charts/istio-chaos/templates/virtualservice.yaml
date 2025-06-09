@@ -23,7 +23,8 @@ spec:
 {{- if $profile.abort.enabled }}
         abort:
           httpStatus: {{ $profile.abort.statusCode }}
-          percentage:value: {{ $profile.abort.percentage }}
+          percentage:
+             value: {{ $profile.abort.percentage }}
 {{- end }}
       route:
         - destination:
