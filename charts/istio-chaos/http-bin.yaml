@@ -7,7 +7,7 @@ global:
 
 profiles:
   abort:
-    enabled: false
+    enabled: true
     statusCode: 503
     percentage: 10
 
@@ -17,7 +17,7 @@ profiles:
     percentage: 100
     
   unreachable:
-    enabled: true
+    enabled: false
     delay: "10s"
     statusCode: 503
     percentage: 100
