@@ -1,35 +1,34 @@
+{{- $profile := .Values.profile }}
+{{- if $profile.enabled }}
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: {{ .Values.global.serviceName }}-chaos
-  namespace: {{ .Values.global.namespace }}
+  name: {{ $.Values.global.serviceName }}-{{ $profile.name }}
+  namespace: {{ $.Values.global.namespace }}
 spec:
   hosts:
-    - {{ .Values.global.serviceHost }}
+    - {{ $.Values.global.serviceHost }}
   http:
-{{- range $name, $profile := .Values.profiles }}
-{{- if $profile.enabled }}
-    - name: {{ $name | quote }}
+    - name: {{ $profile.name }}
       match:
         - headers:
-            x-chaos-profile:
-              exact: {{ $name | quote }}
+            {{ $profile.matchHeader }}:
+              exact: {{ $.Values.global.headerValue | quote }}
       fault:
-{{- if $profile.delay }}
+{{- if and $profile.delay }}
         delay:
           fixedDelay: {{ $profile.delay | quote }}
-          percentage:
-            value: {{ $profile.percentage }}
 {{- end }}
-{{- if $profile.statusCode }}
+{{- if and $profile.abortStatus }}
         abort:
-          httpStatus: {{ $profile.statusCode }}
-          percentage:
-            value: {{ $profile.percentage }}
+          httpStatus: {{ $profile.abortStatus }}
+{{- end }}
+{{- if or $profile.delay $profile.abortStatus }}
+        percentage:
+          value: {{ $profile.percentage }}
 {{- end }}
       route:
         - destination:
             host: {{ $.Values.global.serviceHost }}
             subset: {{ $.Values.global.subset }}
-{{- end }}
 {{- end }}
