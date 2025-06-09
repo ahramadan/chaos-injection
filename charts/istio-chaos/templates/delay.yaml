@@ -16,11 +16,7 @@ spec:
       retries:
         attempts: 2
         perTryTimeout: 2s
-      fault:
-        delay:
-          fixedDelay: {{ .Values.profiles.delay.delay | quote }}
-          percentage:
-            value: {{ .Values.profiles.delay.percentage }}
+
       route:
         - destination:
             host: {{ .Values.global.serviceHost }}
