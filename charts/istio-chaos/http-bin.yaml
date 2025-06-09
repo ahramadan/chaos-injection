@@ -6,7 +6,7 @@ global:
   headerValue: "true"
 
 profile:
-  enabled: false
+  enabled: true
   name: zombie-service
   matchHeader: x-chaos-test
 
