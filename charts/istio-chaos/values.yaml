@@ -6,3 +6,9 @@ global:
   headerValue: "true"
 
 profile:
+  enabled: true
+  name: ""
+  matchHeader: "x-chaos-profile"
+  percentage: 50
+  delay: "10s"
+  abortStatus: 505
