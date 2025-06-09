@@ -12,8 +12,8 @@ profiles:
     percentage: 10
 
   delay:
-    enabled: true
-    delay: "10s"           # delay the response by 10 seconds
+    enabled: false
+    delay: "10s"
     percentage: 100
     
   unreachable:
