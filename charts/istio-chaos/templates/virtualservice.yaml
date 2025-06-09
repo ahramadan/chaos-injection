@@ -22,9 +22,9 @@ spec:
 {{- end }}
 {{- if $profile.abort.enabled }}
         abort:
-          httpStatus: {{ $profile.abort.statusCode }}
+          http2Error: CANCEL
           percentage:
-            value: {{ $profile.abort.percentage }}
+            value: 100
 {{- end }}
       route:
         - destination:
