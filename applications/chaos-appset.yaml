@@ -7,8 +7,8 @@ spec:
   generators:
     - list:
         elements:
-          - service: http-bin
-            valuesFile: http-bin.yaml
+          - service: httpbin
+            valuesFile: environments/production/http-bin.yaml
   template:
     metadata:
       name: chaos-{{service}}
@@ -20,7 +20,7 @@ spec:
         path: charts/istio-chaos
         helm:
           valueFiles:
-            - ../../environments/production/{{valuesFile}}
+            - "{{valuesFile}}"
       destination:
         server: https://kubernetes.default.svc
         namespace: default
