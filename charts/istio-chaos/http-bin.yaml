@@ -5,9 +5,17 @@ global:
   subset: "v1"
   headerValue: "true"
 
-profiles:
-  unreachable:
+profile:
+  enabled: true
+  name: unreachable
+  matchHeader: x-chaos-test
+
+  delay:
     enabled: true
-    delay: "5s"
-    statusCode: 503
+    fixedDelay: "5s"
     percentage: 40
+
+  abort:
+    enabled: true
+    statusCode: 503
+    percentage: 10
