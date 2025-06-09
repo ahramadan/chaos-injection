@@ -7,7 +7,7 @@ global:
 
 profiles:
   abort:
-    enabled: false
+    enabled: true
     statusCode: 503
     percentage: 10
 
