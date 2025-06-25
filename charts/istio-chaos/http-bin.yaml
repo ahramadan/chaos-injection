@@ -2,7 +2,6 @@ global:
   serviceName: "httpbin"
   namespace: "default"
   serviceHost: "httpbin.default.svc.cluster.local"
-  subset: "v1"
   headerValue: "true"
 
 profile:
