@@ -6,16 +6,16 @@ global:
   headerValue: "true"
 
 profile:
-  enabled: false
+  enabled: true
   name: zombie-service
   matchHeader: x-chaos-test
 
   delay:
-    enabled: false
+    enabled: true
     fixedDelay: "10s"
     percentage: 40
 
   abort:
     enabled: true
     statusCode: 504
-    percentage: 100
+    percentage: 20
