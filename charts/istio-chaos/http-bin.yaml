@@ -5,7 +5,7 @@ global:
   headerValue: "true"
 
 profile:
-  enabled: true
+  enabled: false
   name: unreachable
   matchHeader: x-chaos-test
 
