@@ -7,7 +7,7 @@ global:
 
 profile:
   enabled: true
-  name: zombie-service
+  name: unreachable
   matchHeader: x-chaos-test
 
   delay:
